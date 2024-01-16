@@ -28,11 +28,11 @@
 			margin: 8px;
 			transition: color .2s ease-out;
 			box-shadow: 0 0 0 16px currentColor;
-			color: #DB2A6F22
+			color: #df409022
 		}
 
 		:root:-moz-window-inactive::after {
-			color: #DB2A6FFF;
+			color: #df4090ff;
 		}
 	`;
 	document.head.append(css);
