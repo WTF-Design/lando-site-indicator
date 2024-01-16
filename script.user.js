@@ -6,7 +6,7 @@
 // @match       https://*.lndo.site/*
 // @match       http://*.lndo.site/*
 // @grant       none
-// @version     1.3
+// @version     1.4
 // @author      wtflm
 // ==/UserScript==
 (function() {
@@ -30,7 +30,7 @@
 				transition: color .2s ease-out;
 				box-shadow: 0 0 0 16px currentColor;
 				color: #df4090ff;
-				background: right 4px bottom 4px / 32px 32px no-repeat;
+				background: right -3px bottom -3px / 32px 32px no-repeat;
 				background-image: url("${GM.info.script.icon}");
 				opacity: .0625;
 			}
