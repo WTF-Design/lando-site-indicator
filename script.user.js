@@ -43,8 +43,8 @@
 
 	// Favicon overlay
 	let canvas = document.createElement("canvas");
-	canvas.width = 256;
-	canvas.height = 256;
+	canvas.width = 64;
+	canvas.height = 64;
 	let context = canvas.getContext("2d");
 	let originalIcon = new Image();
 	let landoOverlay = new Image();
