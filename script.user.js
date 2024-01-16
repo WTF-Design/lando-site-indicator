@@ -6,7 +6,7 @@
 // @match       https://*.lndo.site/*
 // @match       http://*.lndo.site/*
 // @grant       none
-// @version     1.1
+// @version     1.2
 // @author      wtflm
 // ==/UserScript==
 (function() {
