@@ -6,7 +6,7 @@
 // @match       https://*.lndo.site/*
 // @match       http://*.lndo.site/*
 // @grant       none
-// @version     1.0
+// @version     1.1
 // @author      wtflm
 // ==/UserScript==
 (function() {
@@ -52,19 +52,18 @@
 			let compositeIcon = document.createElement("link");
 			compositeIcon.rel = "icon";
 			compositeIcon.href = composite;
-			console.log("are we doing this?");
 			document.querySelectorAll('link[rel="icon"]').forEach(ev => ev.remove());
 			if (document.readyState != "complete") {
 				document.addEventListener("readystatechange", ev => {
-					setTimeout(() => document.body.append(compositeIcon), 500);
+					setTimeout(() => document.body.append(compositeIcon), 200);
 				});
 			} else {
-				setTimeout(() => document.body.append(compositeIcon), 500);
+				setTimeout(() => document.body.append(compositeIcon), 200);
 			}
 		});
 		landoOverlay.src = GM.info.script.icon;
 	});
 	if (!(originalIcon.src = document.querySelector(`link[rel="icon"]`)?.href)) {
-		originalIcon.src = "./favicon.ico";
+		originalIcon.src = "/favicon.ico";
 	}
 })();
