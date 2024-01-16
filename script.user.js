@@ -6,33 +6,37 @@
 // @match       https://*.lndo.site/*
 // @match       http://*.lndo.site/*
 // @grant       none
-// @version     1.2
+// @version     1.3
 // @author      wtflm
 // ==/UserScript==
 (function() {
 	// Window border
 	let css = document.createElement("style");
 	css.textContent = `
-		:root::after {
-			display: block;
-			content: "";
-			width: calc(100% - 16px);
-			height: calc(100% - 16px);
-			pointer-events: none;
-			position: fixed;
-			top: 0;
-			left: 0;
-			z-index: 999999;
-			box-sizing: border-box;
-			border-radius: 8px;
-			margin: 8px;
-			transition: color .2s ease-out;
-			box-shadow: 0 0 0 16px currentColor;
-			color: #df409022
-		}
-
-		:root:-moz-window-inactive::after {
-			color: #df4090ff;
+		:root {
+			&::after {
+				display: block;
+				content: "";
+				width: calc(100% - 16px);
+				height: calc(100% - 16px);
+				pointer-events: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 999999;
+				box-sizing: border-box;
+				border-radius: 8px;
+				margin: 8px;
+				transition: color .2s ease-out;
+				box-shadow: 0 0 0 16px currentColor;
+				color: #df4090ff;
+				background: right 4px bottom 4px / 32px 32px no-repeat;
+				background-image: url("${GM.info.script.icon}");
+				opacity: .0625;
+			}
+			&:-moz-window-inactive::after {
+				opacity: 1;
+			}
 		}
 	`;
 	document.head.append(css);
