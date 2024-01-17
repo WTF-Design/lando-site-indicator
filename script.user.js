@@ -6,7 +6,7 @@
 // @match       https://*.lndo.site/*
 // @match       http://*.lndo.site/*
 // @grant       none
-// @version     1.4
+// @version     1.5
 // @author      wtflm
 // ==/UserScript==
 (function() {
@@ -47,9 +47,9 @@
 	canvas.height = 64;
 	let context = canvas.getContext("2d");
 	let originalIcon = new Image();
-	let landoOverlay = new Image();
-	originalIcon.addEventListener("load", ev => {
-		context.drawImage(originalIcon, 0, 0, canvas.width, canvas.height);
+
+	function loadOverlay() {
+		let landoOverlay = new Image();
 		landoOverlay.addEventListener("load", ev => {
 			context.drawImage(landoOverlay, 0, 0, canvas.width, canvas.height);
 			let composite = canvas.toDataURL();
@@ -66,7 +66,23 @@
 			}
 		});
 		landoOverlay.src = GM.info.script.icon;
+	}
+
+	originalIcon.addEventListener("error", ev => {
+		if (icons.length > ++iconIndex) {
+			originalIcon.src = icons[iconIndex];
+		} else {
+			loadOverlay();
+		}
 	});
+	originalIcon.addEventListener("load", ev => {
+		context.drawImage(originalIcon, 0, 0, canvas.width, canvas.height);
+		loadOverlay();
+	});
+	let icons = [].map.call(document.querySelectorAll(`link[rel="icon"]`), el => el.href);
+	icons.push("/favicon.ico");
+	let iconIndex = 0;
+
 	if (!(originalIcon.src = document.querySelector(`link[rel="icon"]`)?.href)) {
 		originalIcon.src = "/favicon.ico";
 	}
